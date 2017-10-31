@@ -3,17 +3,17 @@
 % 
 
 %% Obtain the max width and height
-cd C:\Users\vydg5\Desktop\paintingsTraining_cropped;
-old_id = cell2mat(label_temp(2,:));
+cd C:\Users\vydg5\Desktop\train_cropped;
+old_id = cell2mat(label_final(2,:));
 
-for i = 1:length(old_id)
-    I = imread(['C:\Users\vydg5\Desktop\paintingsTraining_cropped\' num2str(old_id(i)) '.jpg']);
+for i = 1:length(label_final)
+    I = imread(['C:\Users\vydg5\Desktop\train_cropped\' num2str(label_final{1,i}) '.jpg']);
     im_size = size(double(I));
     if im_size(1) < im_size(2)
-        J = imresize(I,[540, NaN]);
+        J = imresize(I,[530, NaN]);
         J = J(:, floor(size(J,2)/2)-260+1:floor(size(J,2)/2)+260,:);
     else
-        J = imresize(I,[NaN, 540]); 
+        J = imresize(I,[NaN, 530]); 
         J = J(floor(size(J,1)/2)-260+1:floor(size(J,1)/2)+260, :,:);
     end
     J = J(1:512,1:512,:);
